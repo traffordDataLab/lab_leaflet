@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta charset="UTF-8"/>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <title>Trafford Data Lab: MAP TITLE</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="https://www.trafforddatalab.io/css/labBase.css"/>
+        <link rel="stylesheet" href="https://www.trafforddatalab.io/lab_leaflet/labLeafletMap.css"/>
+
+        <style>
+            @media (min-width:621px)
+            {
+                .mainPanelControl
+                {
+                    width: 280px;   /* set this to desired width when not on mobiles */
+                }
+            }
+
+            .infoDockContainer
+            {
+                max-height: 200px;  /* this is just a suggested size */
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="map" class="mapFullScreen"></div>
+
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.62.0/dist/L.Control.Locate.min.js"></script>
+        <script src="https://www.trafforddatalab.io/assets/javascript/labError.js"></script>
+        <script src="https://www.trafforddatalab.io/assets/javascript/labAjax.js"></script>
+        <script src="https://www.trafforddatalab.io/lab_leaflet/labCreateTileLayer.js"></script>
+        <script src="https://www.trafforddatalab.io/lab_leaflet/labLeafletMap.js"></script>
+
+
+        <script>
+            var labMap = new LabLeafletMap({
+                title: 'Insert Title',
+                about: 'Insert information about the map'
+            });
+
+            // Choose the base/tile layer for the map
+            labMap.baseLayers['Light'].addTo(labMap.map);
+
+            // Add the Trafford boundary
+            labAjax('https://www.trafforddatalab.io/spatial_data/local_authority/2016/trafford_local_authority_full_resolution.geojson', function (data) {
+                var stylePoly = {
+                    color: '#212121',
+                    weight: 2,
+                    dashArray: '3',
+                    fillOpacity: 0
+                }
+
+                var traffordBoundary = L.geoJSON(data, { attribution: labMap.attributionOS, style: stylePoly }).addTo(labMap.map);
+
+                labMap.map.fitBounds(traffordBoundary.getBounds()); // adjust the zoom to fit the boundary to the screen size
+            });
+        </script>
+    </body>
+</html>

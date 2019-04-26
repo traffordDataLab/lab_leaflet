@@ -1,0 +1,211 @@
+/*
+    Created:        2018/01/11 by James Austin - Trafford Data Lab
+    Purpose:        For styling Leaflet maps created using the LabLeafletMap object
+    Dependencies:   leaflet.css (external), labBase.css (internal)
+    Licence:        https://www.trafforddatalab.io/lab_leaflet/LICENSE.txt
+*/
+
+/* ### Overridden styles from leaflet.css ### */
+.leaflet-container
+{
+    background: #fff;   /* ensure white background when no tiles are displayed for screenshot/printer */
+    font-family: 'Open Sans', sans-serif;
+    color: #212121;
+}
+
+.leaflet-container a
+{
+    color: #fc6721;     /* all links to be orange as per Lab style */
+}
+
+.leaflet-top.leaflet-left
+{
+    z-index: 100000;    /* ensures the layer control expanded state appears above all other controls */
+}
+
+.leaflet-bar a, .leaflet-control-layers, .leaflet-control-attribution, .labMapControls
+{
+    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.leaflet-control-attribution
+{
+    /* fixes text scaling issue when changing from portrait to landscape on mobile browsers */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* The following styles are for the text/icons within leaflet bar controls e.g. zoom, reset etc. */
+.leaflet-bar a
+{
+    color: #757575;
+}
+
+.leaflet-bar a:hover
+{
+    color: #fc6721;
+}
+
+.leaflet-bar a.leaflet-disabled
+{
+    background-color: rgba(200, 200, 200, 0.8);
+}
+
+.leaflet-bar a.leaflet-disabled:hover
+{
+    color: #bbb;
+}
+
+/* The following styles are to ensure the sizes of all 'button' controls are consistent across all browsers (including touch-capable) */
+.leaflet-bar a,
+.leaflet-bar a:hover,
+.leaflet-control-layers-toggle,
+.leaflet-touch .leaflet-bar a,
+.leaflet-touch .leaflet-control-layers-toggle
+{
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+}
+
+
+/* ### Specific common styles for Trafford Data Lab Leaflet maps ### */
+.mapFullScreen
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* common styling features for custom Leaflet controls such as the main panel, legend etc. */
+.labMapControls
+{
+    /* background styles set in the leaflet.css override section as common with other Leaflet controls */
+    margin: 0;
+    padding: 4px;
+    border: 1px solid rgba(255,255,255,0);  /* transparent border to allow a highlight-on-hover effect if required */
+    border-radius: 3px;
+}
+
+.resetMapControl
+{
+    font-size: 18px;
+}
+
+.geoLocateMapControl
+{
+    font-size: 24px;
+}
+
+.mainPanelControl, .legendControl
+{
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+}
+
+.mainPanelControl
+{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.mainPanelControl, .infoContainer
+{
+    font-size: 14px;
+}
+
+.mainPanelControl:hover, .legendControl:hover
+{
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.titleContainer
+{
+    font-family: 'Roboto', sans-serif;
+    color: #757575;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.toggleGadget
+{
+    color: #a5a5a5;
+    float: right;
+    font-size: 22px;
+}
+
+.toggleGadget:hover
+{
+    cursor: pointer;
+}
+
+.toggleGadgetHiddenState
+{
+    color: #fc6721;
+}
+
+.infoDockContainer
+{
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px dotted #ccc;
+    overflow: auto;
+}
+
+.legendKey
+{
+    /* this is the generic class for graphical representations of something on the map, e.g. a line, an icon etc. */
+    width: 20px;
+    float: left;
+    margin-right: 10px;
+}
+
+.legendKeyLine
+{
+    /* for representing lines within the legend key, e.g. polygon boundaries */
+    margin-top: 7px;
+}
+
+.legendKeyIcon
+{
+    /* for representing markers or the icons within markers - to be defined */
+}
+
+/* For creating labels for place name etc. using L.ToolTip, overriding and adding to the default Leaflet styles */
+.labLabels
+{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: white;
+    font-weight: bold;
+    text-shadow: -1px -1px 10px #757575,
+                 1px -1px 10px #757575,
+                 1px 1px 10px #757575,
+                 -1px 1px 10px #757575;
+}
+
+/* Alterations to ensure correct display on mobiles */
+@media (max-width:620px)
+{
+    .mainPanelControl
+    {
+        width: 240px;
+    }
+
+    .mainPanelControl, .infoContainer
+    {
+        font-size: 12px;
+    }
+
+    .titleContainer
+    {
+        font-size: 20px;
+    }
+
+    .legendControl
+    {
+        max-width: 300px;
+    }
+}
