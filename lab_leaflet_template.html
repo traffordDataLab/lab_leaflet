@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="https://www.trafforddatalab.io/css/labBase.css"/>
-        <link rel="stylesheet" href="https://www.trafforddatalab.io/lab_leaflet/labLeafletMap.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.0.0/labLeafletMap.css"/>
 
         <style>
             @media (min-width:621px)
@@ -35,9 +35,8 @@
         <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.62.0/dist/L.Control.Locate.min.js"></script>
         <script src="https://www.trafforddatalab.io/assets/javascript/labError.js"></script>
         <script src="https://www.trafforddatalab.io/assets/javascript/labAjax.js"></script>
-        <script src="https://www.trafforddatalab.io/lab_leaflet/labCreateTileLayer.js"></script>
-        <script src="https://www.trafforddatalab.io/lab_leaflet/labLeafletMap.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.0.0/labCreateTileLayer.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.0.0/labLeafletMap.js"></script>
 
         <script>
             var labMap = new LabLeafletMap({
@@ -46,14 +45,13 @@
             });
 
             // Choose the base/tile layer for the map
-            labMap.baseLayers['Light'].addTo(labMap.map);
+            labMap.baseLayers['Low detail'].addTo(labMap.map);
 
             // Add the Trafford boundary
             labAjax('https://www.trafforddatalab.io/spatial_data/local_authority/2016/trafford_local_authority_full_resolution.geojson', function (data) {
                 var stylePoly = {
                     color: '#212121',
                     weight: 2,
-                    dashArray: '3',
                     fillOpacity: 0
                 }
 
