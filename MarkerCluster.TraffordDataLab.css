@@ -1,6 +1,8 @@
 /*
-    Custom styles for leaflet.markercluster plugin by Dave Leaver, https://github.com/Leaflet/Leaflet.markercluster
-    Replaces https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css
+    Created:        2018-05-31 by James Austin - Trafford Data Lab
+    Purpose:        Replaces https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css
+    Dependencies:   leaflet.markercluster (https://github.com/Leaflet/Leaflet.markercluster)
+    Licence:        https://www.trafforddatalab.io/lab_leaflet/LICENSE.txt
 */
 
 .marker-cluster-small, .marker-cluster-medium, .marker-cluster-large

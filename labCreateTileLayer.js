@@ -1,5 +1,5 @@
 /*
-    Created:        2017/12/15 by James Austin - Trafford Data Lab
+    Created:        2017-12-15 by James Austin - Trafford Data Lab
     Purpose:        Create Leaflet map tile layers
     Dependencies:   Leaflet.js (http://www.leafletjs.com)
     Licence:        https://www.trafforddatalab.io/lab_leaflet/LICENSE.txt

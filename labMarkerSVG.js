@@ -1,7 +1,7 @@
 /*
-    Created:        2019/02/27 by James Austin - Trafford Data Lab
+    Created:        2019-02-27 by James Austin - Trafford Data Lab
     Purpose:        Create an SVG marker to use as the L.marker object on Leaflet maps to represent point data in GeoJSON
-    Dependencies:   Leaflet.js (external library), changeLuminosity.js (internal library), lab_marker_shadow.png (internal graphic)
+    Dependencies:   Leaflet.js (http://www.leafletjs.com), changeLuminosity.js (https://www.trafforddatalab.io/assets/javascript/changeLuminosity.js), lab_marker_shadow.png
     Licence:        https://www.trafforddatalab.io/lab_leaflet/LICENSE.txt
     Notes:          Thanks to Paul Wujek for the tip to base64 encode the URL of the SVG image here: https://groups.google.com/forum/#!topic/leaflet-js/GSisdUm5rEc
 */

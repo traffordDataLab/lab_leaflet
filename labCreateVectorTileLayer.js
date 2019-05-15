@@ -1,5 +1,5 @@
 /*
-    Created:        2019/02/13 by James Austin - Trafford Data Lab
+    Created:        2019-02-13 by James Austin - Trafford Data Lab
     Purpose:        Create Mapbox GL vector tile layers to use within a Leaflet map
     Dependencies:   Leaflet.js (http://www.leafletjs.com), mapbox-gl.js (https://docs.mapbox.com/mapbox-gl-js/api/), leaflet-mapbox-gl.js (https://github.com/mapbox/mapbox-gl-leaflet)
     Licence:        https://www.trafforddatalab.io/lab_leaflet/LICENSE.txt
