@@ -1,0 +1,48 @@
+/*
+    Created:        2018-09-26 by James Austin - Trafford Data Lab
+    Purpose:        Overridden styles from leaflet.reachability.css to customise the plugin in the Lab style
+    Dependencies:   leaflet.reachability.css (https://github.com/trafforddatalab/leaflet.reachability)
+    Licence:        https://www.trafforddatalab.io/lab_leaflet/LICENSE.txt
+*/
+
+/* Button to expand the reachability control in a toggleable state state */
+.reachability-control-expand-button, .leaflet-touch .reachability-control-expand-button
+{
+    font-size: 24px;
+}
+
+/* The container for the reachability control user interface */
+.reachability-control-settings-container
+{
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* General class for styling the 'button' controls in the user interface container */
+.reachability-control-settings-button
+{
+    font-size: 22px;
+}
+
+/* General class for highlighting the selected 'button' controls in the user interface container and the collapsed control if either the draw or delete mode is active */
+.reachability-control-active, .leaflet-touch .reachability-control-active, .reachability-control-active a, .leaflet-touch .reachability-control-active a
+{
+    border-color: #fc6721;
+    color: #fc6721;
+    box-shadow: 0 1px 5px rgba(252,103,33,0.65);
+}
+
+/* Custom class to style markers at the origin of the isolines */
+.lab-reachability-marker
+{
+    width: 10px;
+    height: 10px;
+    color: #fc6721;
+    text-align: center;
+    font-size: 10px;
+    padding: 3px;
+    border: 2px solid #fc6721;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(255,255,255,0.65);
+    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+}
