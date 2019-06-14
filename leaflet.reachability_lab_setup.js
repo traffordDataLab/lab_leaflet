@@ -9,7 +9,6 @@ function labSetupReachabilityPlugin(objExtraOptions) {
     // First set up the standard options
     var options = {
         apiKey: '58d904a497c67e00015b45fc6862cde0265d4fd78ec660aa83220cdb',
-        ajaxRequestFn: labAjax,
         expandButtonStyleClass: 'reachability-control-expand-button fa fa-bullseye',
         expandButtonContent: '',
         collapseButtonContent: '',
@@ -22,14 +21,14 @@ function labSetupReachabilityPlugin(objExtraOptions) {
         distanceButtonStyleClass: 'fa fa-road',
         timeButtonContent: '',
         timeButtonStyleClass: 'fa fa-clock-o',
-        drivingButtonContent: '',
-        drivingButtonStyleClass: 'fa fa-car',
-        cyclingButtonContent: '',
-        cyclingButtonStyleClass: 'fa fa-bicycle',
-        walkingButtonContent: '',
-        walkingButtonStyleClass: 'fa fa-male',
-        accessibilityButtonContent: '',
-        accessibilityButtonStyleClass: 'fa fa-wheelchair-alt',
+        travelModeButton1Content: '',
+        travelModeButton1StyleClass: 'fa fa-car',
+        travelModeButton2Content: '',
+        travelModeButton2StyleClass: 'fa fa-bicycle',
+        travelModeButton3Content: '',
+        travelModeButton3StyleClass: 'fa fa-male',
+        travelModeButton4Content: '',
+        travelModeButton4StyleClass: 'fa fa-wheelchair-alt',
         markerFn: labReachabilityMarker
     }
 
@@ -67,11 +66,24 @@ function labReachabilityMarker(latLng, travelMode, measure) {
         case 'driving-car':
             faClass = 'fa fa-car'
             break;
+        case 'driving-hgv':
+            faClass = 'fa fa-truck'
+            break;
         case 'cycling-regular':
+        case 'cycling-road':
+        case 'cycling-mountain':
+        case 'cycling-electric':
             faClass = 'fa fa-bicycle'
             break;
-        default:
+        case 'foot-walking':
+        case 'foot-hiking':
             faClass = 'fa fa-male'
+            break;
+        case 'wheelchair':
+            faClass = 'fa fa-wheelchair-alt'
+            break;
+        default:
+            faClass = 'fa fa-dot-circle-o'
     }
 
     var customIcon = L.divIcon({ className: faClass + ' lab-reachability-marker', iconAnchor: [12, 12] });
