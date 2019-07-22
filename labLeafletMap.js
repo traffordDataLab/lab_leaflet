@@ -202,7 +202,6 @@ function LabLeafletMap(objOptions) {
         this.titleText.nodeValue = content;
     };
     this.toggleAboutBtn = document.createElement('div');                            // create the toggle button for the about section..
-    this.toggleAboutBtn.setAttribute('title', 'Show/hide more information');        // ..adding the tooltip..
     this.toggleAboutBtn.setAttribute('class', 'fa fa-plus-square toggleGadget');    // ..adding the CSS..
     this.toggleAboutBtn.addEventListener('click', this.toggleAbout);                // ..and the click event..
     this.titleContainer = L.DomUtil.create('div', 'titleContainer');                // create the container for the title content
