@@ -17,11 +17,15 @@ function LabLeafletMap(objOptions) {
     this.title = (objOptions['title'] == null) ? '' : String(objOptions['title']);                              // String content for the map title. Can contain HTML.
     this.about = (objOptions['about'] == null) ? '' : String(objOptions['about']);                              // String content for information about the map. Can contain HTML.
     this.aboutToggle = (objOptions['aboutToggle'] == 1) ? 1 : 0;                                                // Toggle state for whether the info panel is visible or not. Default is hidden.
+    this.aboutToggleTooltipShow = (objOptions['aboutToggleTooltipShow'] == null) ? 'Show information' : String(objOptions['aboutToggleTooltipShow']);   // Tooltip when about panel content is hidden
+    this.aboutToggleTooltipHide = (objOptions['aboutToggleTooltipHide'] == null) ? 'Hide information' : String(objOptions['aboutToggleTooltipHide']);   // Tooltip when about panel content is visible
+    this.legend = (objOptions['legend'] == null) ? '' : String(objOptions['legend']);                           // The string content to display within the legend control. Can contain HTML.
     this.legendToggle = (objOptions['legendToggle'] == 0) ? 0 : 1;                                              // Toggle state for the legend. Default is visible so long as there is content, otherwise the legend control is completely invisible.
+    this.legendToggleTooltipShow = (objOptions['legendToggleTooltipShow'] == null) ? 'Show legend' : String(objOptions['legendToggleTooltipShow']);     // Tooltip when legend content is hidden
+    this.legendToggleTooltipHide = (objOptions['legendToggleTooltipHide'] == null) ? 'Hide legend' : String(objOptions['legendToggleTooltipHide']);     // Tooltip when legend content is visible
     this.filterGUI = (objOptions['filterGUI'] == null) ? '' : String(objOptions['filterGUI']);                  // HTML content to create form elements used to filter some aspect(s) of the content being displayed on the map.
     this.info = (objOptions['info'] == null) ? '' : String(objOptions['info']);                                 // Default string content to display within the info container. This is primarily used to display data values when hovering/selecting elements on the map.
     this.infoDockId = (objOptions['infoDockId'] == null) ? '' : String(objOptions['infoDockId']);               // The id of the div which contains the infoContainer div. This allows for the info content to scroll within the dock. If no id is supplied a div is created automatically and added to the main panel control. Supplying an id allows for flexible displays where the info panel is outside the map container.
-    this.legend = (objOptions['legend'] == null) ? '' : String(objOptions['legend']);                           // The string content to display within the legend control. Can contain HTML.
 
     // Create the base layers object if it hasn't been supplied. This object is used in the layer control to change the tile layers of the map
     if (objOptions['baseLayers'] == null) {
@@ -76,17 +80,19 @@ function LabLeafletMap(objOptions) {
 
         if (context.aboutToggle == 0) {
             // about container is currently hidden
-            L.DomUtil.removeClass(context.toggleAboutBtn, 'fa-chevron-circle-up');
-            L.DomUtil.addClass(context.toggleAboutBtn, 'fa-chevron-circle-down');
+            L.DomUtil.removeClass(context.toggleAboutBtn, 'fa-minus-square');
+            L.DomUtil.addClass(context.toggleAboutBtn, 'fa-plus-square');
             L.DomUtil.addClass(context.toggleAboutBtn, 'toggleGadgetHiddenState');
             L.DomUtil.addClass(context.aboutContainer, 'hideContent');
+            context.toggleAboutBtn.setAttribute('title', context.aboutToggleTooltipShow);   // update the toggle tooltip
         }
         else {
             // about container is currently visible
-            L.DomUtil.removeClass(context.toggleAboutBtn, 'fa-chevron-circle-down');
-            L.DomUtil.addClass(context.toggleAboutBtn, 'fa-chevron-circle-up');
+            L.DomUtil.removeClass(context.toggleAboutBtn, 'fa-plus-square');
+            L.DomUtil.addClass(context.toggleAboutBtn, 'fa-minus-square');
             L.DomUtil.removeClass(context.toggleAboutBtn, 'toggleGadgetHiddenState');
             L.DomUtil.removeClass(context.aboutContainer, 'hideContent');
+            context.toggleAboutBtn.setAttribute('title', context.aboutToggleTooltipHide);   // update the toggle tooltip
         }
     };
 
@@ -97,17 +103,19 @@ function LabLeafletMap(objOptions) {
 
         if (context.legendToggle == 0) {
             // legend container is currently hidden
-            L.DomUtil.removeClass(context.toggleLegendBtn, 'fa-chevron-circle-down');
-            L.DomUtil.addClass(context.toggleLegendBtn, 'fa-chevron-circle-up');
+            L.DomUtil.removeClass(context.toggleLegendBtn, 'fa-minus-square');
+            L.DomUtil.addClass(context.toggleLegendBtn, 'fa-plus-square');
             L.DomUtil.addClass(context.toggleLegendBtn, 'toggleGadgetHiddenState');
             L.DomUtil.addClass(context.legendContainer, 'hideContent');
+            context.toggleLegendBtn.setAttribute('title', context.legendToggleTooltipShow);   // update the toggle tooltip
         }
         else {
             // legend container is currently visible
-            L.DomUtil.removeClass(context.toggleLegendBtn, 'fa-chevron-circle-up');
-            L.DomUtil.addClass(context.toggleLegendBtn, 'fa-chevron-circle-down');
+            L.DomUtil.removeClass(context.toggleLegendBtn, 'fa-plus-square');
+            L.DomUtil.addClass(context.toggleLegendBtn, 'fa-minus-square');
             L.DomUtil.removeClass(context.toggleLegendBtn, 'toggleGadgetHiddenState');
             L.DomUtil.removeClass(context.legendContainer, 'hideContent');
+            context.toggleLegendBtn.setAttribute('title', context.legendToggleTooltipHide);   // update the toggle tooltip
         }
     };
     // ###########################
@@ -162,10 +170,10 @@ function LabLeafletMap(objOptions) {
     this.legendControlContainer = this.legendControl.getContainer();    // get the control container, not the div holding the content of the legend
 
     // legend toggle button
-    this.toggleLegendBtn = document.createElement('div');                                   // creating the toggle button..
-    this.toggleLegendBtn.setAttribute('class', 'fa fa-chevron-circle-down toggleGadget');   // ..adding the CSS..
-    this.toggleLegendBtn.addEventListener('click', this.toggleLegend);                      // ..and the click event..
-    this.legendControlContainer.appendChild(this.toggleLegendBtn);                          // ..finally adding it to the title container
+    this.toggleLegendBtn = document.createElement('div');                           // creating the toggle button..
+    this.toggleLegendBtn.setAttribute('class', 'fa fa-plus-square toggleGadget');   // ..adding the CSS..
+    this.toggleLegendBtn.addEventListener('click', this.toggleLegend);              // ..and the click event..
+    this.legendControlContainer.appendChild(this.toggleLegendBtn);                  // ..finally adding it to the title container
 
     // create the container to hold the legend content
     this.legendContainer = L.DomUtil.create('div', 'legendContainer noFloat');
@@ -193,12 +201,13 @@ function LabLeafletMap(objOptions) {
     this.updateTitle = function (content) {
         this.titleText.nodeValue = content;
     };
-    this.toggleAboutBtn = document.createElement('div');                                    // create the toggle button for the about section..
-    this.toggleAboutBtn.setAttribute('class', 'fa fa-chevron-circle-down toggleGadget');    // ..adding the CSS..
-    this.toggleAboutBtn.addEventListener('click', this.toggleAbout);                        // ..and the click event..
-    this.titleContainer = L.DomUtil.create('div', 'titleContainer');                        // create the container for the title content
-    this.titleContainer.appendChild(this.toggleAboutBtn);                                   // add the toggle button to the title container...
-    this.titleContainer.appendChild(this.titleText);                                        // ...and finally the title text
+    this.toggleAboutBtn = document.createElement('div');                            // create the toggle button for the about section..
+    this.toggleAboutBtn.setAttribute('title', 'Show/hide more information');        // ..adding the tooltip..
+    this.toggleAboutBtn.setAttribute('class', 'fa fa-plus-square toggleGadget');    // ..adding the CSS..
+    this.toggleAboutBtn.addEventListener('click', this.toggleAbout);                // ..and the click event..
+    this.titleContainer = L.DomUtil.create('div', 'titleContainer');                // create the container for the title content
+    this.titleContainer.appendChild(this.toggleAboutBtn);                           // add the toggle button to the title container...
+    this.titleContainer.appendChild(this.titleText);                                // ...and finally the title text
 
     // container for information about this map
     this.aboutContainer = L.DomUtil.create('div', 'aboutContainer');
