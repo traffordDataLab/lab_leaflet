@@ -1,5 +1,6 @@
 /*
     Created:        2017-12-15 by James Austin - Trafford Data Lab
+    Last update:    2020-11-30
     Purpose:        Create Leaflet map tile layers
     Dependencies:   Leaflet.js (http://www.leafletjs.com)
     Licence:        https://www.trafforddatalab.io/lab_leaflet/LICENSE.txt
@@ -11,7 +12,7 @@ function labCreateTileLayer(type) {
         case 'CartoDB.Positron':
             // Light grey tiles, used as our default (Light)
             return L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-            	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+            	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>',
             	subdomains: 'abcd',
                 minZoom: 3,
                 maxZoom: 18,
@@ -21,7 +22,7 @@ function labCreateTileLayer(type) {
         case 'CartoDB.DarkMatter':
             // Dark/black tiles useful for highlighting data, however can cause issues with our standard boundary colours (Night)
             return L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>',
                 subdomains: 'abcd',
                 minZoom: 3,
                 maxZoom: 18,
@@ -31,7 +32,7 @@ function labCreateTileLayer(type) {
         case 'OpenStreetMap.Mapnik':
             // Default Open Street Map tiles (Road)
             return L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                 minZoom: 3,
                 maxZoom: 18,
                 errorTileUrl: ''
@@ -49,7 +50,7 @@ function labCreateTileLayer(type) {
         case 'Stamen.TonerLite':
             // Very stark black and white tiles
             return L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
-            	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             	subdomains: 'abcd',
             	minZoom: 3,
                 maxZoom: 18,
